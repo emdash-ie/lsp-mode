@@ -7260,9 +7260,9 @@ returns the command to execute."
             (eq (lsp--workspace-shutdown-action workspace) 'restart)
             (and (eq lsp-restart 'interactive)
                  (let ((query (format
-                               "Server %s exited with status %s(check corresponding stderr buffer for details). Do you want to restart it?"
+                               "Server %s exited with status %s (check corresponding stderr buffer for details). Do you want to restart it?"
                                (lsp--workspace-print workspace)
-                               (process-status (lsp--workspace-proc workspace)))))
+                               (process-exit-status (lsp--workspace-proc workspace)))))
                    (y-or-n-p query))))
     (--each (lsp--workspace-buffers workspace)
       (when (lsp-buffer-live-p it)
